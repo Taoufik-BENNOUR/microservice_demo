@@ -8,7 +8,7 @@ const PostList = () => {
 
     useEffect(() => {
       const fetchPosts = async()=>{
-        const res = await axios.get("http://localhost:5000/posts");
+        const res = await axios.get("http://localhost:5002/posts");
         setposts(res.data);
       }
        fetchPosts();
@@ -20,12 +20,12 @@ const PostList = () => {
         <h1>PostList</h1>
         <div className='d-flex flex-row flex-wrap justify-content-between'>
         {Object.values(posts).map((post) => (
-          <div className='card' style={{width:'30%'}} key={post.postId}>
+          <div className='card' style={{width:'30%'}} key={post.id}>
           <div className='card-body'>
-            <p>Post ID: {post.postId}</p>
+            <p>Post ID: {post.id}</p>
             <h3>Title: {post.title}</h3>
-            <CommentCreate postId={post.postId}/>
-            <CommentList  postId={post.postId} />
+            <CommentCreate postId={post.id}/>
+            <CommentList  comments={post.comments} />
           </div>
         </div>
       ))}
