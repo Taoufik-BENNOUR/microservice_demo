@@ -1,0 +1,7 @@
+.button{
+    border: none;
+    padding: 5px;
+}
+.button.pending{
+    background: orange;
+}
