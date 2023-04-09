@@ -5,3 +5,9 @@
 .button.pending{
     background: orange;
 }
+.button.approved{
+    background: green;
+}
+.button.rejected{
+    background: red;
+}

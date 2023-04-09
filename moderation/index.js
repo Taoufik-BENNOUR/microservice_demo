@@ -6,26 +6,24 @@ const app = express();
 
 app.use(express.json());
 
-app.post("/events", async(req, res) => {
-    const {type,data} = req.body;
-    const {id,content,postId} =data
-    console.log("moderation",req.body);
-    if(type==="CommentCreated"){
-        const status = content.includes('orange')?"rejected":"approved";
-        await axios.post("http://localhost:8000/events",{
-            type:"CommentModerated",
-            data:{
-                id,
-                postId,
-                status,
-                content
-            }
-        })
-    }
+app.post("/events", async (req, res) => {
+  const { type, data } = req.body;
+  const { id, content, postId } = data;
+  console.log("moderation", req.body);
+  if (type === "CommentCreated") {
+    const status = content.includes("orange") ? "rejected" : "approved";
+    await axios.post("http://localhost:8000/events", {
+      type: "CommentModerated",
+      data: {
+        id,
+        postId,
+        status,
+        content,
+      },
+    });
+  }
   res.send({});
-
 });
-
 
 app.listen(port, (err) => {
   err

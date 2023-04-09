@@ -23,7 +23,6 @@ app.post("/posts", async (req, res) => {
   const { title } = req.body;
 
   posts[postId] = {
-    
     postId,
     title,
   };
